@@ -5,8 +5,8 @@ Built for the **Convex All Gas Hackathon** (Convex · OpenAI · Firecrawl · Age
 | | |
 |---|---|
 | **Live app** | https://adjoining-opossum-824.convex.site (public, no invite; create an account to use it) |
-| **Demo video (under 3 min)** | _Link to be added at submission._ |
-| **GitHub repository** | _Link to be added when the repository is published._ |
+| **Demo video (under 3 min)** | [Watch the demo on X](https://x.com/riri_unfiltered/status/2101934433108382159?s=46) |
+| **GitHub repository** | [github.com/justriri/Fitr](https://github.com/justriri/Fitr) |
 
 ---
 
