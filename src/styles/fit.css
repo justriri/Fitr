@@ -1,0 +1,274 @@
+/* Your Fit: one clear answer, the reason, and how sure we are. Also styles alternative retailers. */
+
+.fitsum__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-6);
+  padding-bottom: var(--s-5);
+  border-bottom: 1px solid var(--line);
+}
+
+.fitsum__size {
+  margin-top: var(--s-2);
+  font-family: var(--font-display);
+  font-size: clamp(5.5rem, 4rem + 5vw, 8rem);
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+}
+
+.fitsum__side {
+  text-align: right;
+}
+
+.fitsum__fit {
+  margin-top: var(--s-2);
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  line-height: 1.05;
+}
+
+.checks {
+  display: grid;
+  gap: var(--s-3);
+  margin: var(--s-5) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.check__icon--fits {
+  color: var(--ok);
+}
+
+.check__icon--roomy {
+  color: var(--ink-3);
+}
+
+.check__icon--snug {
+  color: var(--warn);
+}
+
+.conf {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.conf__bars {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.conf__bars i {
+  width: 22px;
+  height: 4px;
+  background: var(--line-strong);
+}
+
+.conf__bars i.on {
+  background: var(--ink);
+}
+
+.conf__text {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.samplecard .fitsum__size {
+  font-size: 4.5rem;
+}
+
+.samplecard .fitsum__fit {
+  font-size: 1.4rem;
+}
+
+/* The real recommendation panel */
+
+.fitcard {
+  padding: var(--s-6);
+  background: var(--tint);
+}
+
+.fitcard__why {
+  margin: var(--s-5) 0 0;
+  color: var(--ink-2);
+}
+
+.fitcard__avail {
+  margin-top: var(--s-4);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.fitcard__more {
+  margin-top: var(--s-5);
+}
+
+.fitcard__more .acc:first-child {
+  border-top-color: var(--line-strong);
+}
+
+.fitcard__more .acc:last-child {
+  border-bottom-color: var(--line-strong);
+}
+
+.fitrows {
+  display: grid;
+  gap: 0;
+  margin: 0 0 var(--s-4);
+}
+
+.fitrow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.fitrow span:first-child {
+  color: var(--ink);
+}
+
+.fitlist {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.fitlist li + li {
+  margin-top: var(--s-2);
+}
+
+.fit-empty {
+  padding: var(--s-6);
+  background: var(--tint);
+}
+
+.fit-empty p + .btn,
+.fit-empty p + .btn--secondary {
+  margin-top: var(--s-4);
+}
+
+/* ---------- Alternative retailers (shown when the recommended size isn't listed) ---------- */
+
+.alt-section {
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line-strong);
+}
+
+.alt-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-4);
+}
+
+.alt-heading h3,
+.alt-empty h3 {
+  font-size: 1.5rem;
+}
+
+.alt-size-chip {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.alt-size-chip strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.alt-subheading {
+  margin: var(--s-5) 0 var(--s-3);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.alt-empty .hint-text {
+  margin-top: var(--s-2);
+}
+
+.alt-card {
+  display: flex;
+  gap: var(--s-4);
+  padding: var(--s-4) 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.alt-card--possible {
+  opacity: 0.85;
+}
+
+.alt-card__thumb {
+  width: 68px;
+  height: 90px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--tint-2);
+}
+
+.alt-card__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.alt-card__retailer {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.alt-card__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.alt-card__size {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.alt-card__size--listed {
+  color: var(--ok);
+  font-weight: 500;
+}
+
+.alt-card__size--not-listed {
+  color: var(--warn);
+}
+
+.alt-card__link {
+  align-self: flex-start;
+  margin-top: var(--s-1);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .fitcard {
+    padding: var(--s-5);
+  }
+
+  .fitsum__top {
+    gap: var(--s-4);
+  }
+}

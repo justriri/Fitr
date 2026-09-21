@@ -1,0 +1,291 @@
+/* Product page: photography leads; three chapters read as one continuous story. */
+
+.pdp {
+  position: relative;
+}
+
+/* ---------- Step bar: 01 The Item → 02 Your Fit → 03 See It on Me ---------- */
+
+.stepnav {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 30;
+  display: flex;
+  height: var(--step-h);
+  margin: 0 calc(-1 * var(--gutter)) var(--s-6);
+  padding: 0 var(--gutter);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stepnav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex: 0 0 auto;
+  margin-right: clamp(1.25rem, 5vw, 3.5rem);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color var(--t) var(--ease);
+}
+
+.stepnav__item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-slow) var(--ease);
+}
+
+.stepnav__item:hover {
+  color: var(--ink);
+}
+
+.stepnav__item[aria-current='step'] {
+  color: var(--ink);
+}
+
+.stepnav__item[aria-current='step']::after {
+  transform: scaleX(1);
+}
+
+.stepnav__no {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0;
+}
+
+/* ---------- Layout ---------- */
+
+.pdp__top {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--s-9);
+  align-items: start;
+}
+
+.gallery {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--step-h) + var(--s-5));
+}
+
+.gallery__frame {
+  aspect-ratio: 4 / 5;
+  max-height: calc(100vh - var(--nav-h) - var(--step-h) - 9rem);
+  width: 100%;
+  overflow: hidden;
+  background: var(--tint);
+}
+
+.gallery__frame--empty {
+  display: grid;
+  place-items: center;
+  padding: var(--s-6);
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.gallery__main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  animation: img-in 700ms var(--ease) both;
+}
+
+@keyframes img-in {
+  from {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+}
+
+.gallery__thumbs {
+  display: flex;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.gallery__thumb {
+  flex: 0 0 64px;
+  height: 80px;
+  padding: 0;
+  border: 1px solid transparent;
+  background: var(--tint);
+  opacity: 0.6;
+  transition: opacity var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.gallery__thumb:hover {
+  opacity: 1;
+}
+
+.gallery__thumb[aria-selected='true'] {
+  opacity: 1;
+  border-color: var(--ink);
+}
+
+.pdp__skelimg {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+
+.pdp__title h1 {
+  margin-top: var(--s-3);
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
+
+.pdp__price {
+  margin-top: var(--s-3);
+  font-size: var(--fs-lg);
+}
+
+/* ---------- Chapters ---------- */
+
+.chapter {
+  margin-top: var(--s-8);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--ink);
+}
+
+.chapter__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+
+.chapter__no {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink-3);
+}
+
+.chapter__head h2 {
+  font-size: var(--fs-h3);
+}
+
+.facts {
+  margin: 0;
+}
+
+.facts__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-5);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+
+.facts__row dt {
+  color: var(--ink-3);
+}
+
+.facts__row dd {
+  margin: 0;
+  max-width: 62%;
+  text-align: right;
+}
+
+.chart {
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  white-space: pre;
+  color: var(--ink-2);
+}
+
+/* The full-width stage below: where the experience ends up. */
+
+.stage {
+  margin-top: var(--s-9);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--ink);
+}
+
+.after {
+  margin-top: var(--s-9);
+  padding-top: var(--s-8);
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+  .pdp__top {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  .gallery {
+    position: static;
+    margin: 0 calc(-1 * var(--gutter));
+  }
+
+  .gallery__frame {
+    max-height: none;
+    aspect-ratio: 4 / 5;
+  }
+
+  .gallery__thumbs {
+    padding: 0 var(--gutter);
+  }
+
+  .chapter {
+    margin-top: var(--s-7);
+  }
+}
+
+@media (max-width: 480px) {
+  .stepnav {
+    justify-content: space-between;
+  }
+
+  .stepnav__item {
+    margin-right: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .stepnav__no {
+    font-size: 1rem;
+  }
+}
+
+/* Grid children may shrink below their content, so a scrolling thumbnail strip never widens the page. */
+.pdp__top > *,
+.tryon > *,
+.protect > *,
+.profile__grid > * {
+  min-width: 0;
+}

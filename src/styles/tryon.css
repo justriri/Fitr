@@ -1,0 +1,260 @@
+/* See It on Me: your photo + the garment → a look. The result is the destination, so it gets the room. */
+
+.tryon {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: var(--s-9);
+  align-items: start;
+}
+
+.tryon--done {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+}
+
+.tryon__skel {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.tryon__lede {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: 1.1;
+  margin-bottom: var(--s-5);
+}
+
+.tryon__name {
+  margin: var(--s-2) 0 var(--s-2);
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
+
+.tryon__meta {
+  margin-bottom: var(--s-5);
+  color: var(--ink-2);
+}
+
+.tryon__result {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.tryon__visual {
+  max-width: 620px;
+}
+
+/* ---------- Start: two portraits ---------- */
+
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.pair__cell {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--tint);
+}
+
+.pair__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.pair__cell figcaption {
+  position: absolute;
+  left: var(--s-3);
+  bottom: var(--s-3);
+  padding: 0.3rem 0.55rem;
+  background: rgba(251, 250, 247, 0.92);
+  color: var(--ink);
+}
+
+.pair__empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--s-4);
+  color: var(--ink-3);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.pair__plus {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ink-3);
+}
+
+/* ---------- Flow: upload → prepares → see ---------- */
+
+.flow {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0 0 var(--s-6);
+  padding: 0;
+  list-style: none;
+}
+
+.flow__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  transition: color var(--t) var(--ease);
+}
+
+.flow__dot {
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  transition: background var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.flow__item[data-state='done'] {
+  color: var(--ink);
+}
+
+.flow__item[data-state='done'] .flow__dot {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.flow__item[data-state='active'] {
+  color: var(--ink);
+}
+
+.flow__item[data-state='active'] .flow__dot {
+  border-color: var(--ink);
+  animation: pulse 1.6s var(--ease) infinite;
+}
+
+/* ---------- Generating ---------- */
+
+.looming {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  max-width: 560px;
+  overflow: hidden;
+  background: var(--tint);
+}
+
+.looming__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.32;
+  filter: grayscale(0.7);
+  transform: scale(1.04);
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  to {
+    transform: scale(1.09) translateY(-1.5%);
+  }
+}
+
+.looming__copy {
+  position: absolute;
+  left: var(--s-5);
+  right: var(--s-5);
+  bottom: var(--s-6);
+}
+
+.looming__stage {
+  margin-bottom: var(--s-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem);
+  line-height: 1.05;
+  animation: stage-in var(--t-slow) var(--ease) both;
+}
+
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.stages {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0 0 var(--s-5);
+  padding: 0;
+  list-style: none;
+}
+
+.stages li {
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  transition: color var(--t) var(--ease);
+}
+
+.stages li[data-state='active'] {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.stages li[data-state='done'] {
+  color: var(--ink-2);
+}
+
+.stages li[data-state='done']::after {
+  content: ' ✓';
+}
+
+/* Generic "something is running" row (also used by the alternatives search) */
+
+.working {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  background: var(--tint);
+}
+
+.working__title {
+  margin-bottom: var(--s-1);
+  font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+  .tryon,
+  .tryon--done {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  .tryon__visual,
+  .looming {
+    max-width: none;
+    margin: 0 calc(-1 * var(--gutter));
+  }
+
+  .looming__copy {
+    left: var(--gutter);
+    right: var(--gutter);
+  }
+
+  .tryon__visual .compare__actions {
+    padding: 0 var(--gutter);
+  }
+}

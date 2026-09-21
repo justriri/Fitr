@@ -1,0 +1,341 @@
+/* After you buy: reassuring, not a complaints dashboard. Fitr suggests; the person decides. */
+
+.protect {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  column-gap: var(--s-9);
+  align-items: start;
+}
+
+.protect > * {
+  grid-column: 2;
+}
+
+.protect > .after__head {
+  grid-column: 1;
+  grid-row: 1 / span 6;
+  position: sticky;
+  top: calc(var(--nav-h) + var(--step-h) + var(--s-5));
+}
+
+.after__head h2 {
+  margin: var(--s-3) 0 var(--s-4);
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
+
+.after__lede {
+  max-width: 24rem;
+  color: var(--ink-2);
+}
+
+.protect__status {
+  margin-bottom: var(--s-5);
+}
+
+.how {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0 0 var(--s-6);
+  padding: 0;
+  list-style: none;
+}
+
+.how li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+}
+
+.how__no {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.picker__title,
+.review__h {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--s-2);
+}
+
+/* ---------- Nothing stands out ---------- */
+
+.calm {
+  padding: var(--s-6);
+  background: var(--tint);
+}
+
+.calm__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.12;
+}
+
+/* ---------- Possible mismatch ---------- */
+
+.verdict {
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-left: 2px solid var(--warn);
+  background: var(--warn-tint);
+}
+
+.verdict__title {
+  margin-bottom: var(--s-2);
+  font-size: 2rem;
+}
+
+.verdict p {
+  color: var(--ink-2);
+}
+
+.sidebyside {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+  margin: var(--s-5) 0;
+}
+
+.sidebyside figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  max-height: 440px;
+  overflow: hidden;
+  background: var(--tint);
+}
+
+.sidebyside img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.sidebyside figcaption {
+  position: absolute;
+  left: var(--s-3);
+  bottom: var(--s-3);
+  padding: 0.3rem 0.55rem;
+  background: rgba(251, 250, 247, 0.92);
+  color: var(--ink);
+}
+
+.sidebyside__empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink-3);
+}
+
+.diffs {
+  border-top: 1px solid var(--ink);
+}
+
+.diffs__row {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1.4fr;
+  gap: var(--s-4);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+
+.diffs__row--head {
+  padding: var(--s-2) 0;
+}
+
+.diffs__aspect {
+  font-weight: 500;
+}
+
+/* ---------- The message ---------- */
+
+.review__message {
+  margin-top: var(--s-8);
+}
+
+.letter {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.letter__subject {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+
+.letter__body,
+.msg__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.letter__body {
+  padding: var(--s-5);
+}
+
+/* ---------- Approval: the moment the person decides ---------- */
+
+.approve {
+  margin-top: var(--s-7);
+  padding: var(--s-6);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.approve__kicker {
+  color: #a19b91;
+}
+
+.approve__title {
+  margin: var(--s-2) 0 var(--s-3);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--paper);
+}
+
+.approve__text {
+  max-width: 30rem;
+  color: #cfc9be;
+}
+
+.approve__error {
+  margin-top: var(--s-4);
+  font-size: var(--fs-sm);
+  color: #f2b4a8;
+}
+
+.approve__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-5);
+  margin-top: var(--s-5);
+}
+
+.approve__cancel {
+  color: var(--paper);
+  text-decoration-color: #6f6a63;
+}
+
+.approve__cancel:hover:not(:disabled) {
+  text-decoration-color: var(--paper);
+}
+
+/* ---------- Tracking ---------- */
+
+.tracking__lede {
+  margin-bottom: var(--s-5);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+
+.msg {
+  padding: var(--s-4) var(--s-5);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.msg--inbound {
+  background: var(--tint);
+  border-color: var(--tint-2);
+}
+
+.msg__meta {
+  margin-bottom: var(--s-2);
+}
+
+.msg__subject {
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.msg__delivery {
+  margin-top: var(--s-3);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.msg__delivery--delivered {
+  color: var(--ok);
+}
+
+.msg__delivery--bounced {
+  color: var(--err);
+}
+
+.followup {
+  margin-top: var(--s-4);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+  .protect {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .protect > * {
+    grid-column: 1;
+  }
+
+  .protect > .after__head {
+    grid-row: auto;
+    position: static;
+    margin-bottom: var(--s-6);
+  }
+}
+
+@media (max-width: 640px) {
+  .diffs__row--head {
+    display: none;
+  }
+
+  .diffs__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-1);
+    padding: var(--s-4) 0;
+  }
+
+  .diffs__row [data-label]::before {
+    content: attr(data-label) ': ';
+    color: var(--ink-3);
+  }
+
+  .approve {
+    margin: var(--s-7) calc(-1 * var(--gutter)) 0;
+    padding: var(--s-6) var(--gutter);
+  }
+
+  .approve__actions .btn {
+    width: 100%;
+  }
+}

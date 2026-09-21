@@ -1,0 +1,214 @@
+/* Profile: the summary card and the measurement wizard. */
+
+.profile__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--s-9);
+  align-items: start;
+}
+
+.profile__photo {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--s-5));
+}
+
+.profile__photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--tint);
+}
+
+.profile__nophoto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 320px;
+  padding: var(--s-6);
+  background: var(--tint);
+}
+
+.spec__group {
+  margin-bottom: var(--s-6);
+}
+
+.spec__group > .label {
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--ink);
+}
+
+.spec__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-5);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+
+.spec__row span:first-child {
+  color: var(--ink-3);
+}
+
+/* ---------- Wizard ---------- */
+
+.wizard {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.progress {
+  display: flex;
+  gap: 4px;
+}
+
+.progress__step {
+  flex: 1;
+  height: 2px;
+  background: var(--line-strong);
+  overflow: hidden;
+}
+
+.progress__step-fill {
+  height: 100%;
+  background: var(--ink);
+  transition: width var(--t-slow) var(--ease);
+}
+
+.progress__label {
+  margin: var(--s-3) 0 var(--s-6);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.step-header {
+  margin-bottom: var(--s-6);
+}
+
+.step-header h2 {
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
+
+.step-header p {
+  margin-top: var(--s-3);
+  color: var(--ink-2);
+  font-size: var(--fs-lg);
+}
+
+.unit-selector {
+  margin-bottom: var(--s-5);
+}
+
+.unit-selector__note {
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.unit-selector__note strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.unit-input {
+  position: relative;
+}
+
+.unit-input input {
+  padding-right: 3.2rem;
+}
+
+.unit-input__suffix {
+  position: absolute;
+  top: 50%;
+  right: 0.9rem;
+  transform: translateY(-50%);
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.field-unit-tag {
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.fit-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+}
+
+.fit-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+
+.fit-option:hover {
+  border-color: var(--ink-3);
+}
+
+.fit-option.selected {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.fit-option__label {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.fit-option__help {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.wizard .btn-row {
+  justify-content: space-between;
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 1000px) {
+  .profile__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  .profile__photo {
+    position: static;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fit-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wizard .btn-row .btn {
+    min-width: 45%;
+  }
+}
+
+.wizard {
+  padding-top: var(--s-5);
+}

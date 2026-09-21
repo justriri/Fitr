@@ -1,0 +1,254 @@
+/* App shell: top bar, page frame, auth sheet, footer. */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__main {
+  flex: 1;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+/* ---------- Top bar (signed in) ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--nav-h);
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t) var(--ease);
+}
+
+.topbar--scrolled {
+  border-bottom-color: var(--line);
+}
+
+.topbar__in {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.topnav a {
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-3);
+  transition: color var(--t-fast) var(--ease);
+}
+
+.topnav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t) var(--ease);
+}
+
+.topnav a:hover {
+  color: var(--ink);
+}
+
+.topnav a[aria-current='page'] {
+  color: var(--ink);
+}
+
+.topnav a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Page frame ---------- */
+
+.page {
+  padding-top: var(--s-6);
+  padding-bottom: var(--s-9);
+}
+
+.page--narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.page-head {
+  margin-bottom: var(--s-7);
+}
+
+.page-head h1 {
+  font-size: var(--fs-h2);
+  margin-top: var(--s-3);
+}
+
+.page-head p {
+  max-width: 34rem;
+  margin-top: var(--s-4);
+  color: var(--ink-2);
+  font-size: var(--fs-lg);
+}
+
+.backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--s-5);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-2);
+  background: none;
+  border: 0;
+  padding: 0.4rem 0;
+}
+
+.backlink:hover {
+  color: var(--ink);
+}
+
+/* ---------- Auth sheet ---------- */
+
+.sheet-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(18, 17, 16, 0.42);
+  animation: fade-in var(--t) var(--ease) both;
+}
+
+.sheet {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(480px, 100%);
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-6) clamp(1.5rem, 5vw, 3rem) var(--s-6);
+  background: var(--paper);
+  overflow-y: auto;
+  animation: sheet-in var(--t-slow) var(--ease) both;
+}
+
+.sheet__close {
+  align-self: flex-end;
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.sheet h2 {
+  margin: var(--s-6) 0 var(--s-3);
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3rem);
+}
+
+.sheet__lede {
+  margin-bottom: var(--s-6);
+  color: var(--ink-2);
+}
+
+.sheet__switch {
+  margin-top: var(--s-5);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.sheet__switch button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .sheet {
+    top: auto;
+    width: 100%;
+    max-height: 92vh;
+    border-radius: var(--r) var(--r) 0 0;
+    animation-name: sheet-up;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: var(--s-7) 0 var(--s-6);
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: var(--fs-sm);
+}
+
+.footer__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4) var(--s-6);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 58px;
+  }
+  .wordmark {
+    font-size: 1.7rem;
+  }
+}

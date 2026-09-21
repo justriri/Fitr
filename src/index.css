@@ -1,0 +1,12 @@
+/* Fitr styles: one design system, loaded in dependency order. */
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/ui.css';
+@import './styles/layout.css';
+@import './styles/landing.css';
+@import './styles/discover.css';
+@import './styles/product.css';
+@import './styles/fit.css';
+@import './styles/tryon.css';
+@import './styles/protection.css';
+@import './styles/profile.css';
